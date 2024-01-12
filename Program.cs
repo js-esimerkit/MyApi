@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
     c.SwaggerDoc("v1", new OpenApiInfo {
         Title = "JWTToken_Auth_API", Version = "v1"
-    });/*
+    });
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
         Name = "Authorization",
             Type = SecuritySchemeType.ApiKey,
@@ -36,13 +36,13 @@ builder.Services.AddSwaggerGen(c => {
             },
             new string[] {}
         }
-    });*/
+    });
 });
 
 
 
 //JWT Authentication
-/*builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options => {
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -53,7 +53,7 @@ builder.Services.AddSwaggerGen(c => {
         ValidAudience = builder.Configuration["Jwt:Audience"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
     };
-});*/
+});
 builder.Services.AddCors();
 
 var app = builder.Build();
@@ -73,7 +73,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//app.UseAuthorization();
+app.UseAuthorization();
 
 app.MapControllers();
 

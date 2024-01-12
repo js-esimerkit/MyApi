@@ -27,7 +27,7 @@ namespace MyApi.Controllers
 
         // GET api/Book/5
         [HttpGet("{id}")]
-        [Authorize]
+ 
         public async Task<IActionResult> GetOne(int id)
         {
             await Db.Connection.OpenAsync();
@@ -40,7 +40,7 @@ namespace MyApi.Controllers
 
         // POST api/Book
         [HttpPost]
-        [Authorize]
+
         public async Task<IActionResult> Post([FromBody]Book body)
         {
             await Db.Connection.OpenAsync();
@@ -52,7 +52,7 @@ namespace MyApi.Controllers
 
         // PUT api/Book/5
         [HttpPut("{id}")]
-        [Authorize]
+
         public async Task<IActionResult> PutOne(int id, [FromBody]Book body)
         {
             await Db.Connection.OpenAsync();
@@ -69,7 +69,7 @@ namespace MyApi.Controllers
 
         // DELETE api/Book/5
         [HttpDelete("{id}")]
-        [Authorize]
+
         public async Task<IActionResult> DeleteOne(int id)
         {
             await Db.Connection.OpenAsync();
